@@ -20,6 +20,7 @@ class FileInput
         std::string symbol;
         std::string title;
         std::string const_affirm;
+        std::string const_negative;
 };
 
 #endif // FILEINPUT_H

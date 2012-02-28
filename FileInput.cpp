@@ -10,6 +10,7 @@ FileInput::FileInput(std::string in,std::string sym)
 {
     //ctor
     const_affirm="[AFFIRM]";
+    const_negative="[NEGATIVE]";
     symbol=sym;
     title=in;
     std::string line;
@@ -21,9 +22,14 @@ FileInput::FileInput(std::string in,std::string sym)
       getline (myfile,line,';');
       if ((line.length()>1)||((line.length()<=1)&&(line[0]!='\n')))
       {
-          line = Helper::replace_all(line,'\n');
+
+        line = Helper::replace_all(line,'\n');
+        if (line.length()>0)
+        {
+          std::cout<<"|-"<<line.length()<<"-|"<<line<<"|--|\n";
           Lines.push_back(line);
           line="";
+        }
       }
 
     }
@@ -53,10 +59,15 @@ std::string FileInput::get_first_result(std::string key)
     {
         if (Lines[i].substr(0,Lines[i].find(symbol)).compare(key)==0)
             {
-                std::cout<<const_affirm<<".compare("<<Lines[i].substr(Lines[i].find(symbol)+1)<<")\n";
+                //std::cout<<const_affirm<<".compare("<<Lines[i].substr(Lines[i].find(symbol)+1)<<")\n";
                 if (const_affirm.compare(Lines[i].substr(Lines[i].find(symbol)+1))==0)
                     {
                         FileInput a(title.substr(0,title.find(".bcf"))+"-affirm.bcf","|");
+                        return a.get_random_result();
+                    }
+                    else if (const_negative.compare(Lines[i].substr(Lines[i].find(symbol)+1))==0)
+                    {
+                        FileInput a(title.substr(0,title.find(".bcf"))+"-negative.bcf","|");
                         return a.get_random_result();
                     }
                     else

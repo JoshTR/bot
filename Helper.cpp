@@ -54,12 +54,9 @@ Remove instances of <replace> in <in>
 ************************************************************/
 std::string Helper::replace_all(std::string in, char replace)
 {
+    std::string t="";
     for (int i=0;i<in.length();i++)
             if (in[i]==replace)
-                for (int x=i;x<in.length();x++)
-                    if (i!=in.length())
-                    in[x]=in[x+1];
-                    else
-                    in[x]='\0';
-return in;
+                    t=in.substr(0,i)+in.substr(i+1);
+return t;
 }
