@@ -110,7 +110,7 @@ std::string Helper::RegexMatch(const std::string given,const std::vector<std::st
         if (match[i].find("*")!=std::string::npos)
         {
             //we have a * regex.
-
+            //apply regex
         }
     }
 

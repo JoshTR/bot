@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <iostream>
 #include <vector>
+#include "regex.h"
 
 class Helper
 {
