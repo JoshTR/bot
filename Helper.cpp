@@ -60,3 +60,59 @@ std::string Helper::replace_all(std::string in, char replace)
                     t=in.substr(0,i)+in.substr(i+1);
 return t;
 }
+
+/****************************************
+
+Extra Parsing that needs to be done
+
+*****************************************/
+std::string Helper::Parser(std::string in)
+{
+    in=Helper::replace_all(in,'|');
+    if (in.compare("[AFFIRM]")==0)
+        return "[AFFIRMATIVE]";
+    else if (in.compare("[NEGATIVE]")==0)
+        return "[NEGATIVE]";
+    else
+        return in;
+}
+
+/***************************************************************************************************
+
+Explode a string into a vector
+
+***************************************************************************************************/
+void Helper::ExplodeString(std::string base, std::string delim, std::vector<std::string>& str_store){
+    size_t pos = base.find(delim);
+
+    if(pos == std::string::npos){
+        if(base != ""){
+            str_store.push_back(base);
+        }
+        return;
+    }else{
+        str_store.push_back(base.substr(0, pos));
+        ExplodeString(base.substr(pos+1, base.length()), delim, str_store);
+    }
+}
+
+/**********************************************************************************
+
+Match a given string to one of the regex strings. returns the result string
+
+**********************************************************************************/
+std::string Helper::RegexMatch(const std::string given,const std::vector<std::string>match,const std::vector<std::string>result)
+{
+    //process matchto, and then based on matchto, check given. if fits, then return true
+
+    for (int i=0;i<match.size();i++)
+    {
+        if (match[i].find("*")!=std::string::npos)
+        {
+            //we have a * regex.
+
+        }
+    }
+
+
+}

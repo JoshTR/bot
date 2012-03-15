@@ -14,13 +14,13 @@ class FileInput
         ~FileInput();
         std::string get_first_result(std::string key);
         std::string get_random_result();
+        std::vector<std::string> get_line_vector(){ return Lines; }
     protected:
     private:
         std::vector<std::string>Lines;
         std::string symbol;
         std::string title;
-        std::string const_affirm;
-        std::string const_negative;
+
 };
 
 #endif // FILEINPUT_H
