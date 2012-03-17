@@ -100,19 +100,20 @@ void Helper::ExplodeString(std::string base, std::string delim, std::vector<std:
 
 Match a given string to one of the regex strings. returns the result string
 
+<match> and <result> must be parallel arrays, generally parsed Lines from <fileinput>
+
 **********************************************************************************/
 std::string Helper::RegexMatch(const std::string given,const std::vector<std::string>match,const std::vector<std::string>result)
 {
-    //process matchto, and then based on matchto, check given. if fits, then return true
 
     for (int i=0;i<match.size();i++)
     {
-        if (match[i].find("*")!=std::string::npos)
+        boost::regex pattern(match[i]);
+        if (boost::regex_search (given, pattern, boost::regex_constants::format_perl))
         {
-            //we have a * regex.
-            //apply regex
+            return result[i];
         }
     }
 
-
+        return "[FAIL]";
 }

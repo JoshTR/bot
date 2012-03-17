@@ -17,3 +17,5 @@ ahab is hunting moby?|[AFFIRM];
 i is cool?|[NEGATIVE];
 ahab is hunting moby dick|[AFFIRM];
 ahab is hunting moby dick?|[AFFIRM];
+^a{2,3}$|regex is in use!;
+i.*?hate.*?you|wow, that's mean. wish i wasn't hated...;

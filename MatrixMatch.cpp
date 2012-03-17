@@ -79,8 +79,10 @@ std::string MatrixMatch::get_result(std::string in)
     }
 
     //if still here, then using matrix replacement didn't work on special, so try regex
+    std::string regResult = Helper::RegexMatch(explodeConcat,m_Special,m_Special_Answer);
 
-//    Helper::RegexMatch(explodeConcat,regexVector);
+    if ("[FAIL]" != regResult)
+        return regResult;
 
     return "[FAIL]";
 }
