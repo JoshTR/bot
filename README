@@ -1,2 +1,9 @@
 checkout this link, to understand the logic here: 
 http://www.anewmorning.com/2009/04/21/programming-your-own-chat-bot-the-logic/
+
+to compile, link the boost regex library:
+http://www.boost.org/doc/libs/1_49_0/libs/regex/doc/html
+
+currently regex is implemented.
+checkout the .bcf files to see how to add/edit how the bot responds.
+the regex dll needs to be in the execution directory.
